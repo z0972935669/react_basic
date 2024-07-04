@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1_類的基本知識</title>
+</head>
+<body>
+    <script>
+        // 創建一個Person類
+        class Person {
+            // 構造器方法
+            constructor(name,age){
+                // console.log('this :>> ', this);
+                // 構造器中的this是誰? - 類的實例對象
+                this.name = name
+                this.age = age
+            }
+        }
+        class Dog {
+
+        }
+        // 創建一個Person的實例對象
+        const p1 = new Person('tom',18)
+        const p2 = new Person('jerry',19)
+        const d1 = new Dog()
+
+        console.log(p1);
+        console.log(p2);
+        console.log(d1);
+    </script>
+</body>
+</html>
