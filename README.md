@@ -1,5 +1,8 @@
 # react_basic
 
+react視頻教學
+https://www.youtube.com/playlist?list=PLmOn9nNkQxJFJXLvkNsGsoCUxJLqyLGxu
+
 react官方網站
 https://zh-hant.react.dev/
 

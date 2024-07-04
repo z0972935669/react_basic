@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2_使用js創建虛擬DOM</title>
+</head>
+<body>
+    <!-- 準備好一個"容器" -->
+    <div id="test"></div>
+
+    <!-- 引入react核心庫 -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- 引入react-dom，用於支持react操作DOM -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script type="text/javascript">
+        // 1.創建虛擬DOM
+        // 這是純JS寫法
+        // const VDOM = React.createElement('h1',{id:'title'},'Hello,React')
+        // 在h1裡面加span需要這樣寫
+        const VDOM = React.createElement('h1',{id:'title'},React.createElement('span',{},'Hello,React'))
+        // 2.渲染虛擬DOM到頁面
+        ReactDOM.render(VDOM,document.getElementById('test'))
+    </script>
+</body>
+</html>
