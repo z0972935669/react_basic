@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsx語法規則</title>
+    <style>
+        .title {
+            background-color: orange;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 準備好一個"容器" -->
+    <div id="test"></div>
+
+    <!-- 引入react核心庫 -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- 引入react-dom，用於支持react操作DOM -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 引入babel，用於將jsx轉為js -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- 此處要寫babel -->
+    <script type="text/babel">
+        const myId = 'aTgUiGu'
+        const myData = 'HeLlo,rEaCt'
+
+        // 1.創建虛擬DOM
+        const VDOM = (
+            <div>
+                <h2 className="title" id={myId.toLowerCase()}>
+                    <span style={{color:'white',fontSize:'30px'}}>{myData.toLowerCase()}</span>
+                </h2>
+                <h2 className="title" id={myId.toUpperCase()}>
+                    <span style={{color:'white',fontSize:'30px'}}>{myData.toLowerCase()}</span>
+                </h2>
+                <input type="text"/><br/>
+                <Good>123</Good>
+            </div>
+        )
+        // 2.渲染虛擬DOM到頁面
+        ReactDOM.render(VDOM,document.getElementById('test'))
+        /*
+            jsx語法規則:
+            1.定義虛擬DOM時，不要寫引號
+            2.標籤中混入JS表達式時要用{}
+            3.樣式的類名指定不要用class, 要用className
+            4.內聯樣式，要用style={{key:value}}的形式去寫
+            5.只有一個根標籤
+            6.標籤必須閉合
+            7.標籤首字母
+                a.若小寫字母開頭，則將改標籤轉為html中同名元素，若html中無該標籤對應的同名元素，則報錯
+                b.若大寫字母開頭，react就去渲染對應組件，若組件沒有定義，則報錯
+        */
+    </script>
+</body>
+</html>
