@@ -51,11 +51,24 @@
                 console.log('我很努力的學習');
             }
         }
+
+        class Car {
+            constructor(name,price) {
+                this.name = name
+                this.price = price
+                // this.wheel = 4
+            }
+            // 類中可以直接寫賦值語句，如下代碼的含義是，給Car的實例對象添加一個屬性，名為a,值為1
+            a = 1
+            wheel = 4
+        }
         
         // 創建一個Person的實例對象
         const p1 = new Person('tom',18)
         const p2 = new Person('jerry',19)
         const s1 = new Student('allen', 15, '高一')
+        const c1 = new Car('BMW',200)
+        const c2 = new Car('Benz',250)
 
         p1.speak()
         p2.speak()
@@ -67,6 +80,8 @@
         console.log(p1);
         console.log(p2);
         console.log(s1);
+        console.log(c1);
+        console.log(c2);
     </script>
 </body>
 </html>
