@@ -20,24 +20,40 @@
     <script type="text/babel">
         // 1.創建類式組件
         class Weather extends React.Component {
+            // 構造器調用幾次? - 1次
             constructor(props){
+                console.log('constructor');
                 super(props)
                 // 初始化狀態
-                this.state = {isHot:true}
+                this.state = {isHot:false,wind:'微風'}
                 // 解決changeWeather中this指向問題
                 this.changeWeather = this.changeWeather.bind(this)
             }
+            // render調用幾次? - 1+n 1是初始化的那次 n是狀態更新的次數
             render(){
-                console.log('this :>> ', this);
+                console.log('render');
+                // console.log('this :>> ', this);
                 // 讀取狀態
-                const {isHot} = this.state
-                return <h1 onClick={this.changeWeather}>今天天氣很{isHot ? '炎熱' : '涼爽'}</h1>
+                const {isHot,wind} = this.state
+                return <h1 onClick={this.changeWeather}>今天天氣很{isHot ? '炎熱' : '涼爽'},{wind}</h1>
             }
+            // changeWeather調用幾次? - 點幾次調幾次
             changeWeather() {
                 // changeWeather放在哪裡? - Weather的原型對象上，供實例使用
                 // 由於changeWeather是做為onClick的回調，所以不是通過實例調用的，是直接調用
                 // 類中的方法默認開啟了局部的嚴格模式，所以changeWeather中的this為undefined
-                console.log(this)
+                // console.log(this)
+
+                console.log('changeWeather');
+
+                // 獲取原來的isHot值
+                const isHot = this.state.isHot
+
+                // 嚴重注意: 狀態必須通過setState進行更新，且更新是一種合併，不是替換
+                this.setState({isHot:!isHot})
+
+                // 嚴重注意: 狀態(state)不可直接更改，下面這行就是直接更改
+                // this.state.isHot = !isHot //這是錯誤的寫法
             }
         }
         // 2.渲染組件到頁面
