@@ -24,6 +24,8 @@
                 super(props)
                 // 初始化狀態
                 this.state = {isHot:true}
+                // 解決changeWeather中this指向問題
+                this.changeWeather = this.changeWeather.bind(this)
             }
             render(){
                 console.log('this :>> ', this);
