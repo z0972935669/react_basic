@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4_函數組件使用props</title>
+</head>
+<body>
+    <!-- 準備好一個"容器" -->
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+
+    <!-- 引入react核心庫 -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- 引入react-dom，用於支持react操作DOM -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 引入babel，用於將jsx轉為js -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- 引入prop-types，用於對組件標簽屬性進行限制 -->
+    <script src="https://unpkg.com/prop-types@15.6.2/prop-types.js"></script>
+
+    <!-- 此處要寫babel -->
+    <script type="text/babel">
+        // 創建組件
+        function Person(props){
+            console.log(props);
+            const {name,sex,age} = props;
+            return (
+                <ul>
+                    <li>姓名:{name}</li>
+                    <li>性別:{sex}</li>
+                    <li>年齡:{age}</li>
+                </ul>
+            )
+        }
+
+        // 15版的時候可以用，16版的時候被棄用
+        // 對標籤屬性進行類型，必要性的限制
+        Person.propTypes = {
+            name:PropTypes.string.isRequired, //限制name必傳，且為字符串
+            sex:PropTypes.string, //限制sex為字符串
+            age:PropTypes.number, //限制age為數值
+        }
+        // 指定默認標籤屬性值
+        Person.defaultProps = {
+            sex:'男', //sex默認值為男
+            age:18 //age默認值為18
+        }
+        
+        // 渲染組件到頁面
+        ReactDOM.render(<Person name="tom" age={18} sex="女"/>,document.getElementById('test1'))
+    </script>
+</body>
+</html>
